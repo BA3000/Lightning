@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -15,11 +13,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float accelerationTime = 3f;
     [SerializeField] private float decelerationTime = 3f;
     [SerializeField] private float moveRotationAngle = 50f;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject projectile1;
+    [SerializeField] private GameObject projectile2;
+    [SerializeField] private GameObject projectile3;
+    [SerializeField, Range(0, 2)] int weaponPower = 0;
     /// <summary>
     /// projectile spawn position
     /// </summary>
-    [SerializeField] private Transform muzzle;
+    [SerializeField] private Transform muzzleMiddle;
+    [SerializeField] private Transform muzzleTop;
+    [SerializeField] private Transform muzzleBottom;
     [SerializeField] private float fireInterval = 0.2f;
 
     private Coroutine _moveCoroutine;
@@ -121,7 +124,23 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(projectile, muzzle.position, Quaternion.identity);
+            switch (weaponPower)
+            {
+                case 0:
+                    PoolManager.Release(projectile1, muzzleMiddle.position, Quaternion.identity);
+                    break;
+                case 1:
+                    PoolManager.Release(projectile1, muzzleTop.position, Quaternion.identity);
+                    PoolManager.Release(projectile1, muzzleBottom.position, Quaternion.identity);
+                    break;
+                case 2:
+                    PoolManager.Release(projectile1, muzzleMiddle.position, Quaternion.identity);
+                    PoolManager.Release(projectile2, muzzleTop.position, Quaternion.identity);
+                    PoolManager.Release(projectile3, muzzleBottom.position, Quaternion.identity);
+                    break;
+                default:
+                    break;
+            }
             yield return _waitForSeconds;
         }
     }
