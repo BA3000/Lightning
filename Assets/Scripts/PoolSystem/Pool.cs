@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +5,10 @@ using UnityEngine;
 public class Pool
 {
     public GameObject Prefab => _prefab;
+
+    public int Size => _size;
+
+    public int RuntimeSize => _queue.Count;
 
     [SerializeField] private GameObject _prefab;
     [SerializeField] private int _size = 1;
@@ -23,7 +26,7 @@ public class Pool
         }
     }
 
-    GameObject Copy()
+    private GameObject Copy()
     {
         var copy = GameObject.Instantiate(_prefab, parent);
         copy.SetActive(false);
@@ -32,8 +35,7 @@ public class Pool
 
     private GameObject AvailableObject()
     {
-        GameObject availableObject = null;
-
+        GameObject availableObject;
         if (_queue.Count > 0 && !_queue.Peek().activeSelf)
         {
             availableObject = _queue.Dequeue();
@@ -51,7 +53,7 @@ public class Pool
     public GameObject PrepareObject()
     {
         var prepareObject = AvailableObject();
-        prepareObject.SetActive(false);
+        prepareObject.SetActive(true);
 
         return prepareObject;
     }
@@ -59,7 +61,7 @@ public class Pool
     public GameObject PrepareObject(Vector3 position)
     {
         var prepareObject = AvailableObject();
-        prepareObject.SetActive(false);
+        prepareObject.SetActive(true);
         prepareObject.transform.position = position;
 
         return prepareObject;
@@ -68,7 +70,7 @@ public class Pool
     public GameObject PrepareObject(Vector3 position, Quaternion rotation)
     {
         var prepareObject = AvailableObject();
-        prepareObject.SetActive(false);
+        prepareObject.SetActive(true);
         prepareObject.transform.position = position;
         prepareObject.transform.rotation = rotation;
 
@@ -78,7 +80,7 @@ public class Pool
     public GameObject PrepareObject(Vector3 position, Quaternion rotation, Vector3 localScale)
     {
         var prepareObject = AvailableObject();
-        prepareObject.SetActive(false);
+        prepareObject.SetActive(true);
         prepareObject.transform.position = position;
         prepareObject.transform.rotation = rotation;
         prepareObject.transform.localScale = localScale;
