@@ -15,6 +15,24 @@ public class PoolManager : MonoBehaviour
         Initialize(playerProjectilePools);
     }
 
+#if UNITY_EDITOR
+    private void OnDestroy()
+    {
+        CheckPoolSize(playerProjectilePools);
+    }
+#endif
+
+    private void CheckPoolSize(Pool[] pools)
+    {
+        foreach (var pool in pools)
+        {
+            if (pool.RuntimeSize > pool.Size)
+            {
+                Debug.LogWarning($"Pool: {pool.Prefab.name} has a runtime size {pool.RuntimeSize} bigger than its initial size {pool.Size}!");
+            }
+        }
+    }
+
     public void Initialize(Pool[] pools)
     {
         foreach (var pool in pools)
