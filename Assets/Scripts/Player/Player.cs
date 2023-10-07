@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float decelerationTime = 3f;
     [SerializeField] private float moveRotationAngle = 50f;
     [SerializeField] private GameObject projectile;
+    /// <summary>
+    /// projectile spawn position
+    /// </summary>
     [SerializeField] private Transform muzzle;
     [SerializeField] private float fireInterval = 0.2f;
 
@@ -41,14 +44,13 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _waitForSeconds = new WaitForSeconds(fireInterval);
     }
 
     private void Start()
     {
         _rigidbody.gravityScale = 0.0f;
         input.EnableGameplayInput();
-
-        _waitForSeconds = new WaitForSeconds(fireInterval);
     }
 
     #region MOVE
@@ -120,7 +122,6 @@ public class Player : MonoBehaviour
         while (true)
         {
             Instantiate(projectile, muzzle.position, Quaternion.identity);
-
             yield return _waitForSeconds;
         }
     }

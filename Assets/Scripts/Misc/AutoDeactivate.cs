@@ -15,7 +15,7 @@ public class AutoDeactivate : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(DeactivateCoroutine());
+        StartCoroutine(nameof(DeactivateCoroutine));
     }
 
     private IEnumerator DeactivateCoroutine()
