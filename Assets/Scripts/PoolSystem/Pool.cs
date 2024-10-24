@@ -71,8 +71,7 @@ public class Pool
     {
         var prepareObject = AvailableObject();
         prepareObject.SetActive(true);
-        prepareObject.transform.position = position;
-        prepareObject.transform.rotation = rotation;
+        prepareObject.transform.SetPositionAndRotation(position, rotation);
 
         return prepareObject;
     }
@@ -81,8 +80,7 @@ public class Pool
     {
         var prepareObject = AvailableObject();
         prepareObject.SetActive(true);
-        prepareObject.transform.position = position;
-        prepareObject.transform.rotation = rotation;
+        prepareObject.transform.SetPositionAndRotation(position, rotation);
         prepareObject.transform.localScale = localScale;
 
         return prepareObject;

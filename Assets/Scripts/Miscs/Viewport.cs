@@ -12,8 +12,8 @@ public class Viewport : Singleton<Viewport>
     {
         Camera mainCamera = Camera.main;
 
-        Vector2 bottomLeft = mainCamera.ViewportToWorldPoint(Vector3.zero);
-        Vector2 topRight = mainCamera.ViewportToWorldPoint(Vector3.one);
+        var bottomLeft = mainCamera.ViewportToWorldPoint(Vector3.zero);
+        var topRight = mainCamera.ViewportToWorldPoint(Vector3.one);
 
         _minX = bottomLeft.x;
         _minY = bottomLeft.y;

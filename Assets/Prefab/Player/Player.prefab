@@ -29122,7 +29122,7 @@ GameObject:
   - component: {fileID: 1500974569}
   - component: {fileID: 1500974567}
   m_Layer: 6
-  m_Name: Star Sparrow 01
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29180,6 +29180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280ef81d38bc403479785a91bf604e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathVFX: {fileID: 0}
+  maxHealth: 100
+  regenerateHealth: 1
+  healthRegenerateTime: 12
+  healthRegeneratePercent: 0.02
   input: {fileID: 11400000, guid: 81d9000f2d79d7f448e0a62c16757db0, type: 2}
   moveSpeed: 15
   paddingX: 0.2

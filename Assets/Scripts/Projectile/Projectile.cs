@@ -5,10 +5,13 @@ namespace Projectile
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 10f;
-        [SerializeField] private Vector2 moveDirection;
 
-        private void OnEnable()
+        [SerializeField] private float moveSpeed = 10f;
+        [SerializeField] protected Vector2 moveDirection;
+
+        protected GameObject target;
+
+        protected virtual void OnEnable()
         {
             StartCoroutine(MoveDirectly());
         }

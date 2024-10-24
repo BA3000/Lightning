@@ -2,17 +2,28 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : Character
 {
+    [SerializeField]
+    bool regenerateHealth = true;
+    [SerializeField]
+    float healthRegenerateTime;
+    [SerializeField, Range(0f, 1f)]
+    float healthRegeneratePercent;
+
+    [Header("--- INPUT ---")]
     [SerializeField] private PlayerInput input;
 
-    private Rigidbody2D _rigidbody;
+    [Header("--- MOVE ---")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float paddingX = 0.2f;
     [SerializeField] private float paddingY = 0.2f;
     [SerializeField] private float accelerationTime = 3f;
     [SerializeField] private float decelerationTime = 3f;
     [SerializeField] private float moveRotationAngle = 50f;
+
+
+    [Header("--- FIRE ---")]
     [SerializeField] private GameObject projectile1;
     [SerializeField] private GameObject projectile2;
     [SerializeField] private GameObject projectile3;
@@ -25,11 +36,18 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform muzzleBottom;
     [SerializeField] private float fireInterval = 0.2f;
 
-    private Coroutine _moveCoroutine;
-    private WaitForSeconds _waitForSeconds;
 
-    private void OnEnable()
+    private Rigidbody2D _rigidbody;
+    private Coroutine _moveCoroutine;
+    private Coroutine _healthRegenerateCoroutine;
+
+    private WaitForSeconds waitForFireInterval;
+
+    private WaitForSeconds waitHealthRegenerateTime;
+
+    protected override void OnEnable()
     {
+        base.OnEnable();
         input.ONMove += Move;
         input.ONStopMove += StopMove;
         input.ONFire += Fire;
@@ -47,7 +65,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _waitForSeconds = new WaitForSeconds(fireInterval);
+        waitForFireInterval = new WaitForSeconds(fireInterval);
+        waitHealthRegenerateTime = new WaitForSeconds(healthRegenerateTime);
     }
 
     private void Start()
@@ -56,8 +75,21 @@ public class Player : MonoBehaviour
         input.EnableGameplayInput();
     }
 
-    #region MOVE
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
 
+        if (gameObject.activeSelf)
+        {
+            if (_healthRegenerateCoroutine != null)
+            {
+                StopCoroutine(_healthRegenerateCoroutine);
+            }
+            _healthRegenerateCoroutine = StartCoroutine(HealthRegenerateCoroutine(waitHealthRegenerateTime, healthRegeneratePercent));
+        }
+    }
+
+    #region MOVE
 
     private void Move(Vector2 moveInput)
     {
@@ -141,7 +173,7 @@ public class Player : MonoBehaviour
                 default:
                     break;
             }
-            yield return _waitForSeconds;
+            yield return waitForFireInterval;
         }
     }
 

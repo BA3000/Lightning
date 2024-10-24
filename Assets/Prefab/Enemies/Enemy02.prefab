@@ -14534,6 +14534,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6754893421661647447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8257372704302567579}
+  m_Layer: 7
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8257372704302567579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754893421661647447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.84, y: -0.055, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8921546478736950316}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8921546478736950322
 GameObject:
   m_ObjectHideFlags: 0
@@ -14543,8 +14573,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8921546478736950316}
+  - component: {fileID: 603498418}
+  - component: {fileID: 2139333263891908300}
   m_Layer: 7
-  m_Name: Star Sparrow 05 With Engine Particles
+  m_Name: Enemy02
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14563,6 +14595,42 @@ Transform:
   m_Children:
   - {fileID: 3901138111850186699}
   - {fileID: 2808702474208388368}
+  - {fileID: 8257372704302567579}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &603498418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921546478736950322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db47a84c0071174b9836f78277b77b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paddingX: 0.8
+  paddingY: 0.4
+  moveSpeed: 1.2
+  moveRotAngle: 35
+  projectiles:
+  - {fileID: 3936360547785527648, guid: 792f9241d70c6934684e5911995a6d28, type: 3}
+  muzzle: {fileID: 8257372704302567579}
+  minFireInterval: 1
+  maxFireInterval: 3.5
+--- !u!114 &2139333263891908300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921546478736950322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6fac97bec047b4dadbb5a54e23d1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathVFX: {fileID: 0}
+  maxHealth: 8
