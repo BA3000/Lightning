@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5209223155184234150}
   - component: {fileID: 2502653209937460355}
   - component: {fileID: 2991347371773245149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 3936360547785527651}
   - component: {fileID: 3936360547785527650}
   - component: {fileID: 3836854105409961405}
-  m_Layer: 0
+  - component: {fileID: 3596122918439022042}
+  m_Layer: 9
   m_Name: EnemyProjectileBasicChasing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,5 +141,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06698f7cc7b347e4c9d988a8b12088e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitVFX: {fileID: 0}
+  damage: 0
   moveSpeed: 5
   moveDirection: {x: -1, y: 0}
+--- !u!58 &3596122918439022042
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936360547785527648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1

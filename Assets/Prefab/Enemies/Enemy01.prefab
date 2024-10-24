@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 214778051926960353}
   - component: {fileID: 828910167}
   - component: {fileID: 4805164221455588904}
+  - component: {fileID: 8313307822285542297}
+  - component: {fileID: 3105344654867830475}
   m_Layer: 7
   m_Name: Enemy01
   m_TagString: Player
@@ -70,6 +72,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 0}
   maxHealth: 12
+--- !u!50 &8313307822285542297
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214778051926960383}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!70 &3105344654867830475
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214778051926960383}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035, y: -0.07}
+  m_Size: {x: 1.12, y: 0.35}
+  m_Direction: 1
 --- !u!1 &2100968527171872563
 GameObject:
   m_ObjectHideFlags: 0
