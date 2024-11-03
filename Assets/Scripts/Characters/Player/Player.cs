@@ -129,11 +129,11 @@ public class Player : Character
     {
         var t = 0f;
 
-        while (t < time)
+        while (t < 1f)
         {
-            t += Time.fixedDeltaTime;
-            _rigidbody.velocity = Vector2.Lerp(_rigidbody.velocity, moveVelocity, t / time);
-            transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, t / time);
+            t += Time.fixedDeltaTime / time;
+            _rigidbody.velocity = Vector2.Lerp(_rigidbody.velocity, moveVelocity, t);
+            transform.rotation = Quaternion.Lerp(transform.rotation, moveRotation, t);
             yield return null;
         }
     }
