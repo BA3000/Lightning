@@ -14634,7 +14634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6fac97bec047b4dadbb5a54e23d1bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathVFX: {fileID: 0}
+  deathVFX: {fileID: 2342042931496088306, guid: 97b415311529fa145aacd3eedaac728e, type: 3}
   maxHealth: 8
 --- !u!50 &7022274198815498619
 Rigidbody2D:
